@@ -1,0 +1,29 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "API do projeto do curso react Impacta",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiderval/impacta-react-noturno.git"
+  },
+  "keywords": [
+    "impacta",
+    "react",
+    "node",
+    "js",
+    "mongo"
+  ],
+  "author": "hiderval cruz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hiderval/impacta-react-noturno/issues"
+  },
+  "homepage": "https://github.com/hiderval/impacta-react-noturno#readme",
+  "dependencies": {
+    "mongoose": "^5.8.0"
+  }
+}
