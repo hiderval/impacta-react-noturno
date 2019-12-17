@@ -24,7 +24,7 @@ export class CadastroCurso extends Component {
 
     listar(){
         axios.get(URL).then(response => {
-            this.setState({cursos : response.data});
+            this.setState({cursos : response.data})
         })
     }
 
@@ -36,6 +36,18 @@ export class CadastroCurso extends Component {
         this.setState({descricao: e.target.value});
     }
 
+    cargaHorariaChange(e){
+        this.setState({cargaHoraria: e.target.value});
+    }
+
+    precoChange(e){
+        this.setState({preco: e.target.value});
+    }
+
+    categoriaChange(e){
+        this.setState({categoria: e.target.value});
+    }
+
     render() {
         return (
             <div className="row border-bottom">
@@ -44,8 +56,13 @@ export class CadastroCurso extends Component {
                     codigo={this.state.codigo}
                     codigoChange={this.codigoChange.bind(this)}
                     descricao={this.state.descricao}
-                    descricaoChange={this.descricaoChange.bind(this)} 
-                    />
+                    descricaoChange={this.descricaoChange.bind(this)}
+                    cargaHoraria={this.state.cargaHoraria}
+                    cargaHorariaChange={this.cargaHorariaChange.bind(this)}
+                    preco={this.state.preco}
+                    precoChange={this.precoChange.bind(this)} 
+                    categoria={this.state.categoria}
+                    categoriaChange={this.categoriaChange.bind(this)} />
                 </div>
                 <div className="col-md-6">
                     <ListCurso cursos={this.state.cursos} />

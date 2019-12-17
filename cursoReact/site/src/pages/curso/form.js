@@ -8,7 +8,7 @@ export class FormCurso extends Component {
                 <h3 className="border-bottom">Formulario</h3>
                 <form>
                     <div className="form-group row">
-                        <label for="codigo"
+                        <label formHtml="codigo"
                             className="col-sm-4 col-form-label">
                             Código:
                         </label>
@@ -19,39 +19,42 @@ export class FormCurso extends Component {
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label for="descrição"
+                        <label formHtml="descrição"
                             className="col-sm-4 col-form-label">
                             Descrição:
                         </label>
                         <div className="col-sm-8">
                             <input type="text"
                                 className="form-control" id="descricao"
-                                value={this.props.descricaoChange} onChange={this.props.descricaoChange} />
+                                value={this.props.descricao} onChange={this.props.descricaoChange} />
                         </div>
                     </div>
             <div className="form-group row">
-                        <label for="cargaHoraria"
+                        <label formHtml="cargaHoraria"
                             className="col-sm-4 col-form-label">
-                            Carga Horária:</label>
+                            Carga Horária:
+                        </label>
                         <div className="col-sm-8 col-8">
                             <input type="number"
-                                className="form-control" id="cargaHoraria" />
+                                className="form-control" id="cargaHoraria"
+                                value={this.props.cargaHoraria} onChange={this.props.cargaHorariaChange} />
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label for="preco"
+                        <label formHtml="preco"
                             className="col-sm-4 col-form-label">
                             Preço:</label>
                         <div className="col-sm-8 col-8">
                             <input type="text"
-                                className="form-control" id="preco" />
+                                className="form-control" id="preco" 
+                                value={this.props.preco} onChange={this.props.precoChange}/>
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label for="categoria"
+                        <label formHtml="categoria"
                             className="col-sm-4 col-form-label">Categoria:</label>
                         <div className="col-sm-8 col-8">
-                            <select className="form-control" id="categoria" >
+                            <select className="form-control" id="categoria" value={this.props.categoria} onChange={this.props.categoriaChange} >
                                 <option>INFORMATICA</option>
                                 <option>ENGENHARIA</option>
                                 <option>ADMINISTRACAO</option>
