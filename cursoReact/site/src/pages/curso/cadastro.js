@@ -24,12 +24,16 @@ export class CadastroCurso extends Component {
 
     listar(){
         axios.get(URL).then(response => {
-            this.setState({cursos : response.data})
+            this.setState({cursos : response.data});
         })
     }
 
     codigoChange(e){
-        this.setState({codigo: e.target.value})
+        this.setState({codigo: e.target.value});
+    }
+
+    descricaoChange(e){
+        this.setState({descricao: e.target.value});
     }
 
     render() {
@@ -40,7 +44,8 @@ export class CadastroCurso extends Component {
                     codigo={this.state.codigo}
                     codigoChange={this.codigoChange.bind(this)}
                     descricao={this.state.descricao}
-                    descricaoChange={this.descricao.bind(this)} />
+                    descricaoChange={this.descricaoChange.bind(this)} 
+                    />
                 </div>
                 <div className="col-md-6">
                     <ListCurso cursos={this.state.cursos} />

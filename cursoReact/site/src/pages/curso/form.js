@@ -25,7 +25,8 @@ export class FormCurso extends Component {
                         </label>
                         <div className="col-sm-8">
                             <input type="text"
-                                className="form-control" id="descricao" />
+                                className="form-control" id="descricao"
+                                value={this.props.descricaoChange} onChange={this.props.descricaoChange} />
                         </div>
                     </div>
             <div className="form-group row">

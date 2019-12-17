@@ -29,6 +29,6 @@ export class ListCurso extends Component {
                     </tbody>
                 </table>
             </div>
-            )
+        )
     }
 }
