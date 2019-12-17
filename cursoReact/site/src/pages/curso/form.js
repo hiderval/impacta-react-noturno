@@ -14,7 +14,8 @@ export class FormCurso extends Component {
                         </label>
                         <div className="col-sm-8 col-8">
                             <input type="number"
-                                className="form-control" id="codigo" />
+                                className="form-control" id="codigo"
+                                value={this.props.codigo} onChange={this.props.codigoChange} />
                         </div>
                     </div>
                     <div className="form-group row">
