@@ -9,6 +9,18 @@ export class ListCurso extends Component {
             <tr key={curso._id}>
                 <td>{curso.codigo}</td>
                 <td>{curso.descricao}</td>
+                <td>
+                    <button className="btn btn-success"
+                        onClick={() => this.props.editaCurso(curso)}>
+                        <i className="fa fa-check"></i>
+                    </button>
+                </td>
+                <td >
+                    <button className="btn btn-danger"
+                        onClick={() => this.props.removerCurso(curso)}>
+                        <i className="fa fa-trash-o"></i>
+                    </button>
+                </td>
             </tr>
         ));
     }

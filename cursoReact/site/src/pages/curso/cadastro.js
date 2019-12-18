@@ -8,7 +8,8 @@ const URL = 'http://localhost:3200/api/cursos'
 export class CadastroCurso extends Component {
 
     initialState = {
-        codigo: '123',
+        _id: null,
+        codigo: '5',
         descricao: '',
         cargaHoraria: '',
         preco: '',
@@ -48,6 +49,67 @@ export class CadastroCurso extends Component {
         this.setState({categoria: e.target.value});
     }
 
+    adicionar(e){
+        e.preventDefault();
+
+        const {codigo, descricao, cargaHoraria, categoria, preco} = this.state
+    
+        const body = {
+            codigo,
+            descricao,
+            cargaHoraria,
+            categoria,
+            preco
+        }
+
+        axios.post(URL, body)
+            .then(_ => {
+                 this.limpar()
+                this.listar()
+                alert('Curso adicionado')
+
+        })
+        .catch(error => {
+            console.log(error)
+            alert('Erro ao adicionar curso')
+            console.log(error)
+        
+        })
+    }
+
+    limpar(){
+        this.setState( this.initialState)
+    }
+
+    removerCurso(curso){
+        if(window.confirm(`Deseja remover este curso? - ${curso.descricao}`)){
+            axios.delete(`${URL}/${curso._id}`)
+            .then(_ =>{
+                this.listar()
+                alert('Curso Deletado!')
+            })
+
+            .catch(error => {
+                alert('Erro ao deletar!')
+
+            }) 
+
+        }
+
+    }
+
+    editaCurso(curso){
+        this.setState({
+            _id: curso._id,
+            codigo: curso.codigo,
+            descricao: curso.descricao,
+            cargaHoraria: curso.cargaHoraria,
+            preco: curso.preco,
+            categoria: curso.categoria
+
+        })
+    }
+
     render() {
         return (
             <div className="row border-bottom">
@@ -62,10 +124,19 @@ export class CadastroCurso extends Component {
                     preco={this.state.preco}
                     precoChange={this.precoChange.bind(this)} 
                     categoria={this.state.categoria}
-                    categoriaChange={this.categoriaChange.bind(this)} />
+                    categoriaChange={this.categoriaChange.bind(this)} 
+                    
+                    adicionar={this.adicionar.bind(this)}
+                    isAtualizar={this.state._id ? true : false}
+                    />
                 </div>
                 <div className="col-md-6">
-                    <ListCurso cursos={this.state.cursos} />
+                    <ListCurso 
+                        cursos={this.state.cursos}
+                        removerCurso={this.removerCurso.bind(this)}
+                        editaCurso={this.editaCurso.bind(this)}
+                      
+                    />
                 </div>
             </div>
         )

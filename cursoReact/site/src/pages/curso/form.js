@@ -8,7 +8,7 @@ export class FormCurso extends Component {
                 <h3 className="border-bottom">Formulario</h3>
                 <form>
                     <div className="form-group row">
-                        <label formHtml="codigo"
+                        <label formhtml="codigo"
                             className="col-sm-4 col-form-label">
                             Código:
                         </label>
@@ -19,7 +19,7 @@ export class FormCurso extends Component {
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label formHtml="descrição"
+                        <label formhtml="descrição"
                             className="col-sm-4 col-form-label">
                             Descrição:
                         </label>
@@ -29,8 +29,8 @@ export class FormCurso extends Component {
                                 value={this.props.descricao} onChange={this.props.descricaoChange} />
                         </div>
                     </div>
-            <div className="form-group row">
-                        <label formHtml="cargaHoraria"
+                    <div className="form-group row">
+                        <label formhtml="cargaHoraria"
                             className="col-sm-4 col-form-label">
                             Carga Horária:
                         </label>
@@ -41,7 +41,7 @@ export class FormCurso extends Component {
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label formHtml="preco"
+                        <label formhtml="preco"
                             className="col-sm-4 col-form-label">
                             Preço:</label>
                         <div className="col-sm-8 col-8">
@@ -51,7 +51,7 @@ export class FormCurso extends Component {
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label formHtml="categoria"
+                        <label formhtml="categoria"
                             className="col-sm-4 col-form-label">Categoria:</label>
                         <div className="col-sm-8 col-8">
                             <select className="form-control" id="categoria" value={this.props.categoria} onChange={this.props.categoriaChange} >
@@ -64,9 +64,12 @@ export class FormCurso extends Component {
                     </div>
                     <div className="form-group row">
                         <button
-                            className="btn btn-primary ml-3 mb-3">
+                            className="btn btn-primary ml-3 mb-3" onClick={this.props.adicionar}>
+                                {this.props.isAtualizar ? 'Atualizar' : 'Adicionar'}
                             Adicionar
+
                         </button>
+
                     </div>
                 </form>
             </div>
