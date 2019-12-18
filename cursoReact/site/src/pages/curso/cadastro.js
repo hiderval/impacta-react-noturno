@@ -33,9 +33,9 @@ export class CadastroCurso extends Component {
         this.setState({_id: e.target.value});
     }
 
-    codigoChange(e){
-        this.setState({codigo: e.target.value});
-    }
+    //codigoChange(e){
+    //    this.setState({codigo: e.target.value});
+    //}
 
     descricaoChange(e){
         this.setState({descricao: e.target.value});
