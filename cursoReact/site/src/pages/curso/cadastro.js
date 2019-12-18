@@ -9,7 +9,7 @@ export class CadastroCurso extends Component {
 
     initialState = {
         _id: null,
-        codigo: '5',
+        codigo: '',
         descricao: '',
         cargaHoraria: '',
         preco: '',
@@ -27,6 +27,10 @@ export class CadastroCurso extends Component {
         axios.get(URL).then(response => {
             this.setState({cursos : response.data})
         })
+    }
+
+    codigoChange(e){
+        this.setState({_id: e.target.value});
     }
 
     codigoChange(e){
@@ -50,35 +54,51 @@ export class CadastroCurso extends Component {
     }
 
     adicionar(e){
-        e.preventDefault();
+        e.persist();
 
-        const {codigo, descricao, cargaHoraria, categoria, preco} = this.state
+        const {_id, codigo, descricao, cargaHoraria, categoria, preco} = this.state
     
         const body = {
+            _id, 
             codigo,
             descricao,
             cargaHoraria,
             categoria,
             preco
         }
+        
+        if(_id) {
 
-        axios.post(URL, body)
+            axios.put(`${URL}/${_id}`, body)
             .then(_ => {
-                 this.limpar()
-                this.listar()
-                alert('Curso adicionado')
+                this.trataErro(e, 'Atualizado')
+              //  this.limpar(e)
+               // this.listar()
+                //alert('Curso adicionado')
 
         })
         .catch(error => {
-            console.log(error)
-            alert('Erro ao adicionar curso')
-            console.log(error)
+            this.trataErro(error, 'Ocorreu um erro nesta edicao')
+         //   console.log(error)
+           // alert('Erro ao adicionar curso')
         
         })
     }
+        else{
 
-    limpar(){
-        this.setState( this.initialState)
+            axios.post(URL, this.state).then(_ => {
+                this.trataErro(e, 'Adicionado')
+            })
+            .catch(error => {
+
+                this.trataErro(error, 'Ocorreu erro')
+            })
+        }
+    }
+
+    limpar(e){
+        e.preventDefault()
+        this.setState(this.initialState)
     }
 
     removerCurso(curso){
@@ -91,11 +111,8 @@ export class CadastroCurso extends Component {
 
             .catch(error => {
                 alert('Erro ao deletar!')
-
-            }) 
-
+            })
         }
-
     }
 
     editaCurso(curso){
@@ -108,6 +125,11 @@ export class CadastroCurso extends Component {
             categoria: curso.categoria
 
         })
+    }
+
+    trataErro(error, msg){
+        console.log(error)
+        alert(msg)
     }
 
     render() {
@@ -135,7 +157,6 @@ export class CadastroCurso extends Component {
                         cursos={this.state.cursos}
                         removerCurso={this.removerCurso.bind(this)}
                         editaCurso={this.editaCurso.bind(this)}
-                      
                     />
                 </div>
             </div>
