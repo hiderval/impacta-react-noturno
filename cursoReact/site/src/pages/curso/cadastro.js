@@ -67,28 +67,24 @@ export class CadastroCurso extends Component {
             preco
         }
         
-        if(_id) {
+        if(_id){
 
             axios.put(`${URL}/${_id}`, body)
-            .then(_ => {
-                this.trataErro(e, 'Atualizado')
+            .then(_ => this.trataErro(e, 'Atualizado'))
               //  this.limpar(e)
                // this.listar()
                 //alert('Curso adicionado')
 
-        })
         .catch(error => {
             this.trataErro(error, 'Ocorreu um erro nesta edicao')
          //   console.log(error)
            // alert('Erro ao adicionar curso')
         
         })
-    }
-        else{
+        }else{
 
-            axios.post(URL, this.state).then(_ => {
-                this.trataErro(e, 'Adicionado')
-            })
+            axios.post(URL, body)
+            .then(_ => this.trataErro(e, 'Adicionado'))
             .catch(error => {
 
                 this.trataErro(error, 'Ocorreu erro')
@@ -125,6 +121,12 @@ export class CadastroCurso extends Component {
             categoria: curso.categoria
 
         })
+    }
+
+    trataSucesso(e, msg){
+        this.limpar(e)
+        this.listar()
+        alert(msg)
     }
 
     trataErro(error, msg){
