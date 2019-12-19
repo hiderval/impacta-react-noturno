@@ -29,13 +29,13 @@ export class CadastroCurso extends Component {
         })
     }
 
-    codigoChange(e){
-        this.setState({_id: e.target.value});
-    }
-
     //codigoChange(e){
-    //    this.setState({codigo: e.target.value});
+     //   this.setState({_id: e.target.value});
     //}
+
+    codigoChange(e){
+        this.setState({codigo: e.target.value});
+    }
 
     descricaoChange(e){
         this.setState({descricao: e.target.value});
@@ -70,21 +70,21 @@ export class CadastroCurso extends Component {
         if(_id){
 
             axios.put(`${URL}/${_id}`, body)
-            .then(_ => this.trataErro(e, 'Atualizado'))
+            .then(_ => this.trataSucesso(e, 'Atualizado'))
               //  this.limpar(e)
                // this.listar()
                 //alert('Curso adicionado')
 
-        .catch(error => {
+            .catch(error => {
             this.trataErro(error, 'Ocorreu um erro nesta edicao')
-         //   console.log(error)
-           // alert('Erro ao adicionar curso')
+            //console.log(error)
+            //alert('Erro ao adicionar curso')
         
         })
         }else{
 
             axios.post(URL, body)
-            .then(_ => this.trataErro(e, 'Adicionado'))
+            .then(_ => this.trataSucesso(e, 'Adicionado'))
             .catch(error => {
 
                 this.trataErro(error, 'Ocorreu erro')
