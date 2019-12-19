@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {dataOnChange, nomeOnchange, emailOnchange, telefoneOnchange} from '../../action/contatoactions';
+import {dataOnChange, nomeOnchange, emailOnchange, telefoneOnchange
+} from '../../action/contatoactions';
 
 export class ContatoForm extends React.Component {
 
