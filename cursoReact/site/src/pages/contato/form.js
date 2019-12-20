@@ -91,7 +91,6 @@ export class ContatoForm extends React.Component {
     }
 }
 
-
 const mapStateToProps = store => ({
     data : store.contato.data,
     nome : store.contato.nome,
