@@ -1,3 +1,7 @@
+import axios from 'axios';
+const URL = 'http://localhost:3200/api/contatos'
+
+
 export const dataOnChange = function(e){
     return{
         type : 'ATUALIZA_DATA',
@@ -31,4 +35,31 @@ export const assuntoOnchange = function(e){
         type : 'ATUALIZA_ASSUNTO',
         value : e.target.value
     }
+}
+
+export const limparOnchange = function(e){
+    return{
+        type : 'ATUALIZA_LIMPAR',
+        value : e.target.value
+    }
+}
+
+export const adicionar = function(data, nome, email, telefone, assunto){
+        axios.post(URL, {
+            data,
+            nome,
+            email,
+            telefone,
+            assunto
+        })
+        .then(_ =>{
+            alert('Contato enviado')
+        })
+
+        .catch(error =>{
+            console.log(error)
+            alert('Erro ao salvar')
+
+        })
+    
 }

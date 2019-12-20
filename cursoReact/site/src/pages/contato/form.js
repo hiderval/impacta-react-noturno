@@ -6,11 +6,22 @@ import {
     nomeOnchange, 
     emailOnchange, 
     telefoneOnchange,
-    assuntoOnchange
+    assuntoOnchange,
+    limpar
 } from '../../action/contatoactions';
 
 
 export class ContatoForm extends React.Component {
+
+    preAdicionar(e){
+        if(e){
+            e.preventDefault()
+        }
+       
+        export const adicionar = function {data, nome, email, telefone, assunto, adicionar} = this.props
+        adicionar(data, nome, email, telefone, assunto)
+        //this.props.preAdicionar()
+    }
 
     render() {
         return (
@@ -69,7 +80,15 @@ export class ContatoForm extends React.Component {
                     </div>
                     <div className="form-group row"></div>
                     <button className="btn btn-primary ml-3 mb-3">
+                        onClick={this.preAdicionar.bind(this)}
                         Adicionar
+                    </button>
+
+                    <button className="btn btn-primary ml-3 mb-3">
+                        onClick = {(e)  => {
+
+                        }}
+                        Limpar
                     </button>
                 </form>
             </div >
