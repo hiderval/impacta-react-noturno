@@ -7,20 +7,17 @@ import {
     emailOnchange, 
     telefoneOnchange,
     assuntoOnchange,
-    limpar
+    limpar,
+    adicionar
 } from '../../action/contatoactions';
 
 
 export class ContatoForm extends React.Component {
 
     preAdicionar(e){
-        if(e){
-            e.preventDefault()
-        }
-       
-        export const adicionar = function {data, nome, email, telefone, assunto, adicionar} = this.props
+        e.preventDefault()
+        const {data, nome, email, telefone, assunto, adicionar} = this.props
         adicionar(data, nome, email, telefone, assunto)
-        //this.props.preAdicionar()
     }
 
     render() {
@@ -79,15 +76,13 @@ export class ContatoForm extends React.Component {
                         </div>
                     </div>
                     <div className="form-group row"></div>
-                    <button className="btn btn-primary ml-3 mb-3">
-                        onClick={this.preAdicionar.bind(this)}
+                    <button className="btn btn-primary ml-3 mb-3"
+                        onClick={this.preAdicionar.bind(this)} >
                         Adicionar
                     </button>
 
-                    <button className="btn btn-primary ml-3 mb-3">
-                        onClick = {(e)  => {
-
-                        }}
+                    <button className="btn btn-primary ml-3 mb-3"
+                        onClick={this.props.limpar} >
                         Limpar
                     </button>
                 </form>
@@ -110,7 +105,9 @@ const mapActionToProps = dispatch => bindActionCreators({
     nomeOnchange,
     emailOnchange,
     telefoneOnchange,
-    assuntoOnchange
+    assuntoOnchange,
+    adicionar,
+    limpar
 },  dispatch)
 
 export default connect (mapStateToProps, mapActionToProps)(ContatoForm)

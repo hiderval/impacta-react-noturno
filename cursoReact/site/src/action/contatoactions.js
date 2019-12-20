@@ -37,7 +37,7 @@ export const assuntoOnchange = function(e){
     }
 }
 
-export const limparOnchange = function(e){
+export const limpar = function(e){
     return{
         type : 'ATUALIZA_LIMPAR',
         value : e.target.value
@@ -45,21 +45,23 @@ export const limparOnchange = function(e){
 }
 
 export const adicionar = function(data, nome, email, telefone, assunto){
-        axios.post(URL, {
+    return (dispatch) =>{
+    
+    return axios.post(URL, {
             data,
             nome,
             email,
             telefone,
-            assunto
+            assunto,
         })
         .then(_ =>{
             alert('Contato enviado')
-        })
-
-        .catch(error =>{
+            dispatchEvent({
+                type : 'ATUALIZA_LIMPAR'
+            })
+        }).catch(error =>{
             console.log(error)
             alert('Erro ao salvar')
-
         })
-    
+}
 }

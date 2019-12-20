@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cabecalho } from '../../componentes/cabecalho';
+import {Cabecalho} from '../../componentes/cabecalho';
 import ContatoForm from './form';
 import {connect} from 'react-redux';
 
